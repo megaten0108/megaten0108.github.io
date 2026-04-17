@@ -285,13 +285,25 @@
 
   <script>
     (function () {
-      var key = "siteVisitCounter";
-      var currentValue = Number(localStorage.getItem(key) || "0") + 1;
-      localStorage.setItem(key, String(currentValue));
       var counterElement = document.getElementById("visit-counter");
-      if (counterElement) {
-        counterElement.textContent = String(currentValue);
+      if (!counterElement) {
+        return;
       }
+
+      var url = "https://api.countapi.xyz/hit/megaten0108.github.io/bakery-price";
+      fetch(url)
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Counter request failed");
+          }
+          return response.json();
+        })
+        .then(function (data) {
+          counterElement.textContent = String(data.value || 0);
+        })
+        .catch(function () {
+          counterElement.textContent = "н/д";
+        });
     })();
   </script>
 
