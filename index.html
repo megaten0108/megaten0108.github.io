@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Прайс-лист пекарни</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text: #111111;
+      --muted: #7a7a7a;
+      --line: #e9e9e9;
+      --bg: #fff7e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 96px 0 58px;
+      text-align: center;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(38px, 5.4vw, 64px);
+      line-height: 1.1;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 44px 32px;
+      padding-bottom: 96px;
+    }
+
+    .card {
+      border-top: none;
+      padding-top: 26px;
+      min-height: 206px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      background: #f3f3f3;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .name {
+      margin: 0 0 12px;
+      font-size: 31px;
+      line-height: 1.12;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      max-width: 96%;
+    }
+
+    .meta {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.42;
+      max-width: 96%;
+    }
+
+    .price {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 10px;
+      font-size: 58px;
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-top: -6px;
+    }
+
+    .price::after {
+      content: "руб.";
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .rub {
+      display: none;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .footer {
+      margin-top: 20px;
+      background: #0f0f10;
+      color: #f3f3f3;
+      padding: 34px 0 38px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, #2b2b2e 0%, #8d8d95 50%, #2b2b2e 100%);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      font-weight: 600;
+    }
+
+    .footer-note {
+      margin: 8px 0 0;
+      color: #b7b7b7;
+      font-size: 14px;
+    }
+
+    .footer-counter {
+      margin: 10px 0 0;
+      color: #9b9b9f;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #f3f3f3;
+      text-decoration: none;
+      font-size: 15px;
+      border-bottom: 1px solid #3c3c3f;
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 1080px) {
+      .catalog {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(1160px, calc(100% - 30px));
+      }
+
+      .hero {
+        padding: 60px 0 32px;
+      }
+
+      .catalog {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .name {
+        font-size: 28px;
+      }
+
+      .photo {
+        margin-bottom: 14px;
+      }
+
+      .price {
+        font-size: 48px;
+      }
+
+      .rub {
+        font-size: 22px;
+      }
+
+      .footer {
+        padding: 28px 0 32px;
+      }
+
+      .footer-brand {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1 class="title">Прайс-лист пекарни</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="catalog">
+      <article class="card"><div class="photo"><img src="assets/images/01.jpg" alt="" loading="lazy"></div><div><h2 class="name">Пончик Берлинер в ассортименте</h2><p class="meta">Срок годности 72ч/3 суток · 94 гр</p></div><p class="price">88 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/02.jpg" alt="" loading="lazy"></div><div><h2 class="name">Пончик жареный</h2><p class="meta">Срок годности 72ч/3 суток · 85 гр</p></div><p class="price">70 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/03.jpg" alt="" loading="lazy"></div><div><h2 class="name">Пирожное Медовое</h2><p class="meta">Срок годности 72ч/3 суток · 100 гр</p></div><p class="price">115 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/04.jpg" alt="" loading="lazy"></div><div><h2 class="name">Пирожное Красный бархат</h2><p class="meta">Срок годности 72ч/3 суток · 100 гр</p></div><p class="price">125 <span class="rub">р.</span></p></article>
+      <article class="card"><div><h2 class="name">Пирожное Сникерс</h2><p class="meta">Срок годности 72ч/3 суток · 100 гр</p></div><p class="price">125 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/05.png" alt="" loading="lazy"></div><div><h2 class="name">Корзинка манго-маракуйя с меренгой</h2><p class="meta">Срок годности 72ч/3 суток · 80 гр</p></div><p class="price">96 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/06.jpg" alt="" loading="lazy"></div><div><h2 class="name">Круассан с шоколадом</h2><p class="meta">Срок годности 72ч/3 суток · 100 гр</p></div><p class="price">98 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/07.jpg" alt="" loading="lazy"></div><div><h2 class="name">Десерт Cake-to-go Сникерс</h2><p class="meta">Срок годности 72ч/3 суток · 180 гр</p></div><p class="price">123 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/08.jpg" alt="" loading="lazy"></div><div><h2 class="name">Десерт Cake-to-go Красный Бархат</h2><p class="meta">Срок годности 72ч/3 суток · 180 гр</p></div><p class="price">123 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/09.jpg" alt="" loading="lazy"></div><div><h2 class="name">Эклер ванильный</h2><p class="meta">Срок годности 72ч/3 суток · 75 гр</p></div><p class="price">107 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/10.jpg" alt="" loading="lazy"></div><div><h2 class="name">Эклер шоколадный</h2><p class="meta">Срок годности 72ч/3 суток · 75 гр</p></div><p class="price">107 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/11.jpg" alt="" loading="lazy"></div><div><h2 class="name">Сэндвич панини зерновой с ветчиной</h2><p class="meta">Срок годности 48ч/2 суток · 210 гр</p></div><p class="price">190 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/12.jpg" alt="" loading="lazy"></div><div><h2 class="name">Сэндвич панини пшеничный с курицей</h2><p class="meta">Срок годности 48ч/2 суток · 210 гр</p></div><p class="price">190 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/13.jpg" alt="" loading="lazy"></div><div><h2 class="name">Сэндвич школьный</h2><p class="meta">Срок годности 48ч/2 суток · 120 гр</p></div><p class="price">85 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/14.jpg" alt="" loading="lazy"></div><div><h2 class="name">Клаб-сэндвич с курицей</h2><p class="meta">Срок годности 48ч/2 суток · 140 гр</p></div><p class="price">135 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/15.jpg" alt="" loading="lazy"></div><div><h2 class="name">Клаб-сэндвич с ветчиной</h2><p class="meta">Срок годности 48ч/2 суток · 140 гр</p></div><p class="price">135 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/16.jpg" alt="" loading="lazy"></div><div><h2 class="name">Школьная пицца</h2><p class="meta">Срок годности 72ч/3 суток · 100 гр</p></div><p class="price">88 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/17.jpg" alt="" loading="lazy"></div><div><h2 class="name">Закрытая пицца</h2><p class="meta">Срок годности 72ч/3 суток · 120 гр</p></div><p class="price">95 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/18.jpg" alt="" loading="lazy"></div><div><h2 class="name">Улитка с заварным кремом</h2><p class="meta">Срок годности 72ч/3 суток · 70 гр</p></div><p class="price">40 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/19.jpg" alt="" loading="lazy"></div><div><h2 class="name">Улитка с творогом Даллас</h2><p class="meta">Срок годности 72ч/3 суток · 70 гр</p></div><p class="price">55 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/20.jpg" alt="" loading="lazy"></div><div><h2 class="name">Ватрушка с творогом</h2><p class="meta">Срок годности 72ч/3 суток · 110 гр</p></div><p class="price">81 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/21.jpg" alt="" loading="lazy"></div><div><h2 class="name">Шанежка Провансаль</h2><p class="meta">Срок годности 72ч/3 суток · 110 гр</p></div><p class="price">64 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/22.jpg" alt="" loading="lazy"></div><div><h2 class="name">Эчпочмак</h2><p class="meta">Срок годности 72ч/3 суток · 100 гр</p></div><p class="price">74 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/23.jpg" alt="" loading="lazy"></div><div><h2 class="name">Сочень сытный</h2><p class="meta">Срок годности 72ч/3 суток · 60 гр</p></div><p class="price">72 <span class="rub">р.</span></p></article>
+
+      <article class="card"><div class="photo"><img src="assets/images/24.jpg" alt="" loading="lazy"></div><div><h2 class="name">Сочень с творогом</h2><p class="meta">Срок годности 72ч/3 суток · 90 гр</p></div><p class="price">64 <span class="rub">р.</span></p></article>
+      <article class="card"><div class="photo"><img src="assets/images/25.jpg" alt="" loading="lazy"></div><div><h2 class="name">Плюшка Московская</h2><p class="meta">Срок годности 72ч/3 суток · 100 гр</p></div><p class="price">41 <span class="rub">р.</span></p></article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">Прайс-лист пекарни</p>
+        <p class="footer-note">Свежая выпечка и десерты каждый день</p>
+        <p class="footer-counter">Посещений сайта: <span id="visit-counter">0</span></p>
+      </div>
+      <div class="footer-links">
+        <span>Контакты</span>
+        <a href="https://wa.me/79241680363" target="_blank" rel="noopener noreferrer">+7 (924) 168-03-63</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var key = "siteVisitCounter";
+      var currentValue = Number(localStorage.getItem(key) || "0") + 1;
+      localStorage.setItem(key, String(currentValue));
+      var counterElement = document.getElementById("visit-counter");
+      if (counterElement) {
+        counterElement.textContent = String(currentValue);
+      }
+    })();
+  </script>
+
+</body>
+</html>
