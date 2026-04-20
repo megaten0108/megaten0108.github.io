@@ -165,19 +165,7 @@
       gap: 8px;
     }
 
-    .footer-counter .counter {
-      display: inline-block;
-      min-width: 64px;
-      text-align: center;
-      font-family: monospace;
-      background: #fff;
-      color: #111;
-      padding: 6px 10px;
-      border-radius: 6px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.04) inset;
-      font-size: 16px;
-      font-weight: 600;
-    }
+    /* Global counter will be served as an SVG from the counter server */
 
     .footer-counter img {
       height: 18px;
@@ -296,8 +284,7 @@
       <div>
         <p class="footer-brand">Прайс-лист пекарни</p>
         <p class="footer-note">Свежая выпечка и десерты каждый день</p>
-        <p class="footer-counter">Посещений сайта: <span id="local-counter" class="counter">0000</span>
-        </p>
+        <p class="footer-counter">Посещений сайта: <img id="global-counter" src="/counter.svg" alt="Счётчик посещений" /></p>
       </div>
       <div class="footer-links">
         <span>Контакты</span>
@@ -307,23 +294,5 @@
   </footer>
   </footer>
 
-  <script>
-  // Local per-browser visit counter (increments on each page load)
-  (function(){
-    try {
-      const key = 'site_visits_local_v1';
-      const raw = localStorage.getItem(key) || '0';
-      let n = parseInt(raw, 10);
-      if (isNaN(n)) n = 0;
-      n += 1;
-      localStorage.setItem(key, String(n));
-      const el = document.getElementById('local-counter');
-      if (el) el.textContent = String(n).padStart(4, '0');
-    } catch (e) {
-      // fail silently
-    }
-  })();
-  </script>
-
-  </body>
+</body>
 </html>
