@@ -160,6 +160,14 @@
       margin: 10px 0 0;
       color: #9b9b9f;
       font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-counter img {
+      height: 18px;
+      width: auto;
     }
 
     .footer-links {
@@ -274,7 +282,9 @@
       <div>
         <p class="footer-brand">Прайс-лист пекарни</p>
         <p class="footer-note">Свежая выпечка и десерты каждый день</p>
-        <p class="footer-counter">Посещений сайта: <span id="visit-counter">0</span></p>
+        <p class="footer-counter">Посещений сайта:
+          <img src="/img/oldStyle.svg" alt="Счётчик посещений" referrerpolicy="unsafe-url">
+        </p>
       </div>
       <div class="footer-links">
         <span>Контакты</span>
@@ -282,30 +292,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      var counterElement = document.getElementById("visit-counter");
-      if (!counterElement) {
-        return;
-      }
-
-      var url = "https://api.countapi.xyz/hit/megaten0108.github.io/bakery-price";
-      fetch(url)
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("Counter request failed");
-          }
-          return response.json();
-        })
-        .then(function (data) {
-          counterElement.textContent = String(data.value || 0);
-        })
-        .catch(function () {
-          counterElement.textContent = "н/д";
-        });
-    })();
-  </script>
 
 </body>
 </html>

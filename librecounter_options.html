@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1">
+	<title>LibreCounter Options</title>
+	<link rel="shortcut icon" href="/favicon.png">
+	<link rel="stylesheet" href="/main.css">
+	<script src="https://librecounter.org/js/chart.js"></script>
+	<script src="https://librecounter.org/js/chartjs-plugin-datalabels@2.js"></script>
+	<script>
+	Chart.register(ChartDataLabels)
+	const plugin = {
+		id: 'background',
+		beforeDraw: (chart, args, opts) => {
+			if (!opts.color) {
+				return;
+			}
+			const {ctx, chartArea} = chart;
+			ctx.fillStyle = opts.color;
+			ctx.fillRect(chartArea.left, chartArea.top, chartArea.width, chartArea.height)
+		}
+	}
+	Chart.register(plugin)
+	</script>
+</head>
+<body>
+
+	<header>
+		<div class="logo">
+		<!-- the logo here does not increase the counter since it's used with /img, the old style below does -->
+		<a href="/" class="imageLink"><img src="/img/isologo-brown.svg" alt="LibreCounter isologo: logo + title" /></a>
+		</div>
+		<h1 class="title">
+		Analytics Options
+		</h1>
+		<p>
+		There are a few visualization and accounting options that you can control.
+		</p>
+	</header>
+
+	<article>
+		<h2>Default</h2>
+		<p>
+		The default style is to show a logo
+		(technically an <a href="https://en.wikipedia.org/wiki/Isotype_(picture_language)">isotype</a>),
+		with brown background and white symbols.
+		To use it, simply add the following HTML snippet to your site:
+		</p>
+		<textarea disabled rows="3" cols="80">
+<a href="/referer/show" target="_blank">
+<img src="/img/counter.svg" referrerPolicy="unsafe-url" />
+</a></textarea>
+
+		<p>
+		The "unsafe-url" referrer policy is there to make sure that the browser
+		sends the whole referrer to LibreCounter,
+		so it can do its thing and attribute the page correctly.
+		</p>
+
+		<h2>Color and Style</h2>
+		<p>
+		You can pick your favorite style from below.
+		To match your site better you can also choose from a variety of colors,
+		all within the Egyptian theme: <tt>[color]</tt> can be
+		<tt>brown</tt>, <tt>orange</tt> or <tt>yellow</tt>.
+		</p>
+		<p>
+		<tt>solid-[color].svg</tt> (default):
+		<img src="/img/solid-brown.svg">
+		<img src="/img/solid-orange.svg">
+		<img src="/img/solid-yellow.svg">
+		</p>
+
+		<p>
+		<tt>white-[color].svg</tt>:
+		<img src="/img/white-brown.svg">
+		<img src="/img/white-orange.svg">
+		<img src="/img/white-yellow.svg">
+		</p>
+
+		<p>
+		<tt>outline-[color].svg</tt>:
+		<img src="/img/outline-brown.svg">
+		<img src="/img/outline-orange.svg">
+		<img src="/img/outline-yellow.svg">
+		<img src="/img/outline-white.svg">
+		</p>
+
+		<p><tt>isologo-[color].svg</tt>:
+		<img class="isologo" src="/img/isologo-brown.svg">
+		<img class="isologo" src="/img/isologo-orange.svg">
+		<img class="isologo" src="/img/isologo-yellow.svg">
+		</p>
+
+		<p>
+		To add to your site just pick style and color and join them with a dash:
+		<tt>[style]-[color].svg</tt>,
+		and use this instead of <tt>counter.svg</tt>.
+		E.g. <tt>https://librecounter.org/outline-orange.svg</tt> will give you an outline in orange:
+		</p>
+		<textarea disabled rows="3" cols="80">
+<a href="/referer/show" target="_blank">
+<img src="/img/outline-orange.svg" referrerPolicy="unsafe-url" />
+</a></textarea>
+
+		<h2>Old Style Counter</h2>
+		<p>
+		This style is an homage to old-time counters,
+		but with <a href="/">LibreCounter</a> stats.
+		</p>
+		<img src="/img/oldStyle.svg" referrerPolicy="unsafe-url" class="oldStyle" />
+		<p>
+		Watch the counter grow every time you reload the page!
+		</p>
+		<p>
+		To use it, simply add the following HTML snippet to your site:
+		</p>
+		<textarea disabled rows="3" cols="80">
+<a href="/referer/show" target="_blank">
+<img src="/img/oldStyle.svg" referrerPolicy="unsafe-url" />
+</a></textarea>
+
+		<h2>Unique Visitors</h2>
+		<p>
+		If you want to count unique visitors to your website instead of page views,
+		just add <code>unique.svg</code> to your site instead of <code>counter.svg</code>:
+		</p>
+		<textarea disabled rows="3" cols="80">
+<a href="/referer/show" target="_blank">
+<img src="/img/unique.svg" referrerPolicy="unsafe-url" />
+</a></textarea>
+		<p>
+		This makes LibreCounter send the header <code>cache-control: max-age=1800, private</code>,
+		so that the image is cached in your browser across multiple page views,
+		for half an hour.
+		</p>
+		<p>
+		You can also use styled logos for unique visitors by adding <code>/unique/</code> to the style,
+		such as <code>/unique/outline-yellow.svg</code>:
+		</p>
+		<textarea disabled rows="4" cols="80">
+<a href="/referer/show" target="_blank">
+<img src="/img/outline-yellow.svg" referrerPolicy="unsafe-url" />
+</a></textarea>
+
+		<h2>Hidden Counter</h2>
+		<p>
+		If you prefer the LibreCounter isotype to be hidden the HTML snippet to add is even simpler:
+		</p>
+		<textarea disabled rows="2" cols="80">
+<img src="/img/counter.svg" referrerPolicy="unsafe-url" width="0" /></textarea>
+		<p>
+		Your stats may still appear in the list of top sites on the home page, though.
+		If you want to keep your stats private you can add the <code>hidden.svg</code> image instead:
+		</p>
+		<textarea disabled rows="2" cols="80">
+<img src="/img/hidden.svg" referrerPolicy="unsafe-url" width="0" /></textarea>
+		<p>
+		Stats will be hidden from the <a href="https://librecounter.org/">LibreCounter homepage</a>;
+		but still be publicly available at
+		<code>https://librecounter.org/[site]/show</code>, where <code>[site]</code>
+		is your domain name (e.g. <code>example.org</code>).
+		This feature is therefore limited to a relative security through obscurity.
+		</p>
+
+		<h2>Bring Your Own Style</h2>
+		<p>
+		If you would like to have a custom style for your site,
+		why not <a href="https://github.com/alexfernandez/librecounter">create it yourself?</a>
+		Pull requests are welcome!
+		</p>
+	</article>
+
+	<footer>
+		© 2024-2026 <a href="https://pinchito.es/">Alex "pinchito" Fernández</a> and <a href="https://github.com/alexfernandez/librecounter/graphs/contributors">contributors</a>.
+		<br />
+		Visual identity and "eye of Horus" logo contributed by <a href="https://fullcircle.es/">Fullcircle</a>.
+		<br />
+		See <a href="https://github.com/alexfernandez/librecounter/">project details</a>.
+	</footer>
+
+</body>
+</html>
